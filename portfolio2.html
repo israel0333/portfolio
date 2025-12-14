@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+           --primary: #4361ee;
+           --secondary: #3a0ca3;
+           --accent: #f72585;
+           --dark: #121826;
+           --light: #f8f9fa;
+           --gray: #6c757d;
+           --transition: all 0.3s ease;
+        }
+        body{
+            font-family: 'poppins', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        header{
+            position: fixed;
+            padding: 25px 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(18, 24, 38, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1000;
+        }
+        .container{
+             max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;  
+        }
+        .inside{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;    
+        }
+        nav ul{
+            display: flex;
+            list-style: none;
+            margin-left: 20%;  
+        }
+        nav ul li{
+            margin-left: 30px;
+        }
+        nav ul li a{
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 20px;
+            position: relative;
+            padding: 5px 0;
+        }
+        nav ul li a:hover{
+              color: var(--gray);
+        }
+        nav ul li a::after{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            width: 0;
+            transition: var(--transition);
+            content: '';
+            width: 0;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        nav ul li a:hover::after{
+            width: 100%;
+        }
+        .logo{
+            font-family: 'raleway', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .logo span{
+            color: var(--accent);
+            -webkit-text-fill-color: var(--accent);
+        }
+        .hero{
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            position: relative;
+            background-image: linear-gradient(rgba(18, 24, 38, 0.85), rgba(18, 24, 38, 0.9)), url('comp.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;     
+        }
+        .hero-text{
+            margin: 0 auto;
+            font-weight: 500;
+            padding: 40px;
+            padding-left: 80px;
+            max-width: 800px;
+            z-index: 2;
+            position: relative;
+
+        }
+        .greeting{
+            font-size: 18px;
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeInDown 1s ease;
+        }
+        h1{
+            font-family: 'raleway', sans serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        .web{
+            color: var(--accent);
+            -webkit-text-fill-color: var(--accent);
+        }
+        .create{
+            font-size: 1.5em;
+            color: var(--light);
+            margin-bottom: 25px;
+            font-weight: 300;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        .company{
+            display: inline-block;
+            font-size: 1.1em;
+            color: var(--light);
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-right: 25px;
+            padding-left: 25px;
+            background: rgba(67, 97, 238, 0.2);
+            border-radius: 50px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(67, 97, 238, 0.3);
+            backdrop-filter: blur(5px);
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+        .connect-btn{
+            
+            /* display: inline-block; */
+            background: linear-gradient(90deg, var(--primary));
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(67, 97,238,0.3);
+            border: navajowhite;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+        .connect-btn i{
+            margin-right: 10px;
+        }
+        .connect-btn:hover{
+            transform: translate(5px);
+            box-shadow: 0 15px 35px  rgba(67, 97,238,0.4);
+        }
+        @keyframes fadeInUp{
+            from{
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInDown{
+            from{
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .skills-section{
+            padding: 100px 0;
+            background-color: rgba(10, 15, 30, 0.9);
+        }
+        .grid{
+            display: grid;
+            gap: 30px;
+            margin-top: 50px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));  
+        }
+        .each{
+    
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+        .each:hover{
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            border-color: rgba(67,97,238,0.3);
+        }
+        .icon{
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .skill-level{
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            margin-top: 15px;
+        }
+        .level-bar{
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary),  var(--accent));
+            border-radius: 3px;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+        .each:hover .level-bar{
+            width: 90%;
+        }
+        h2{
+            font-family: sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        .project-section {
+            padding: 100px 0;
+            background-color: var(--dark);
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+       .each-project {
+           background: var(--card-bg);
+           border-radius: 12px;
+          transition: var(--transition);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .each-project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(67, 97, 238, 0.3);
+        }
+        .project-header {
+           padding: 25px 25px 15px;
+        }
+        .project-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--light);
+        }
+        .project-description {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .project-footer {
+            padding: 0 25px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .project-link {
+           display: inline-block;
+           background: rgba(67, 97, 238, 0.1);
+           color: var(--primary);
+           padding: 10px 25px;
+           border-radius: 50px;
+           text-decoration: none;
+           font-weight: 600;
+           font-size: 0.9rem;
+           transition: var(--transition);
+           border: 1px solid rgba(67, 97, 238, 0.2);
+        }
+        .project-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.2);
+        }
+        .divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.05);
+            margin: 30px 25px;
+        }
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            background-color: rgba(10, 15, 30, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--light);
+            font-size: 20px;
+            transition: var(--transition);
+        }
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        .connect-btn a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="inside">
+                <a href="/" class="logo"> Israel <span>.</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="#about">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li ><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <section class="hero" id="about" >
+        <div class="">
+           <div class="hero-text">
+                <div class="greeting">Hello, I'm</div>
+                <h1>Israel Oyinlola<br><span class="web">Web Developer</span></h1>
+                <div class="create">Creating modern, responsive web experiences that engage users</div>
+                <div class="company">Hizzy Posh</div>
+                <button class="connect-btn">
+                    <i class="fas fa-paper-plane"></i>Connect with me</a>
+                </button>
+           </div>
+        </div>
+    </section>
+    <section class="skills-section" id="skills">
+        <div class="container">
+        <h2>Skills</h2>
+        <div class="grid">
+            <div class="each">
+                <div class="icon">
+                    <i class="fab fa-html5"></i>
+                </div>
+                <div class="skill-name">
+                    HTML
+                </div>
+                <div class="skill-level">
+                    <div class="level-bar"></div>
+                </div>
+            </div>
+            <div class="each">
+                <div class="icon">
+                    <i class="fab fa-css3-alt"></i>
+                </div>
+                <div class="skill-name">CSS</div>
+                <div class="skill-level">
+                    <div class="level-bar"></div>
+                </div>
+            </div>
+            <div class="each">
+                <div class="icon">
+                    <i class="fab fa-js-square"></i>
+                </div>
+                <div class="skill-name">Javascript</div>
+                <div class="skill-level">
+                    <div class="level-bar"></div>
+                </div>
+            </div>
+            <div class="each">
+                <div class="icon">
+                    <i class="fab fa-react"></i>
+                </div>
+                <div class="skill-name">React</div>
+                <div class="skill-level">
+                    <div class="level-bar"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <section class="project-section" id="projects">
+        <div class="container">
+       <h2>Projects</h2>
+       <div class="project-grid">
+            <div class="each-project">
+                <div class="project-header">
+                   <div class="project-title">Project One</div>
+                       <div class="project-description">A brief description of the project. This project showcases modern web
+                       development techniques and responsive design principles.</div>
+                </div>
+                <div class="divider"></div>
+                    <div class="project-footer">
+                        <a href="https://israel0333.github.io/WebLab/" class="project-link">View Project</a>
+                </div>
+            </div>
+           <div class="each-project">
+                <div class="project-header">
+                   <div class="project-title">Project Two</div>
+                    <div class="project-description">A brief description of the project. This project demonstrates clean code
+                    architecture and user-friendly interface design.</div>
+                </div>
+                <div class="divider"></div>
+                <div class="project-footer">
+                   <a href="https://israel0333.github.io/layout-project/" class="project-link">View Project</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+</body>
+<footer id="contact">
+    <div class="container">
+       <div class="social-links">
+       <a href="#"><i class="fab fa-github"></i></a>
+       <a href="https://ng.linkedin.com/in/oyinlolaisrael"><i class="fab fa-linkedin-in"></i></a>
+       <a href="https://www.instagram.com/oyinlolaisrael?igsh=MXNtZnZvMWJ0cHlqYw=="><i class="fab fa-instagram"></i></a>
+       <a href="https://x.com/Hizzy_Posh"><i class="fab fa-twitter"></i></a>
+       <a href="https://t.me/Hizzy_posh29"><i class="fab fa-telegram"></i></a>
+       </div>
+       <div class="copyright">
+           &copy; 2023 Israel Oyinlola. All rights reserved.
+       </div>
+    </div>
+</footer>
+</html>
